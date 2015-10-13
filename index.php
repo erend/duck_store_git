@@ -13,11 +13,30 @@ include_once 'views/header.php';
 					<div class="row clearfix">
 					<!-- элементы каталога -->
 						<?php
-							for($i = 0; $i < 6; $i++) {
+						    include 'data/items.php';
+						    if ($_GET['page'] == 1 || !isset($_GET['page'])) {
+								$id = 0;
 								include 'views/_product.php';
-							}
+								$id = 1;
+								include 'views/_product.php';
+						    }	
+						    elseif ($_GET['page'] == 2) {
+								$id = 2;
+								include 'views/_product.php';
+								$id = 3;
+								include 'views/_product.php';					    	
+						    }		
+
 						?>
 					</div>
+					<?php 
+					if ($_GET['page'] == 1 || !isset($_GET['page'])) {
+						echo "<a href=\"index.php?page=2\">Страница 2</a>";
+					}
+					elseif ($_GET['page'] == 2) {
+						echo "<a href=\"index.php?page=1\">Страница 1</a>";
+					}
+					?>
 				</div>
 			</div>
 		</div>
