@@ -1,12 +1,8 @@
-<?php
-include_once 'views/head.php';
-include_once 'views/header.php';
-?>
 <section>
 <div class="container">
 	<div class="row clearfix">
     <!-- боковое меню -->
-    <?php include_once 'views/category_menu.php'; ?>
+    <?php include_once __DIR__ . '/../category_menu.php'; ?>
 		<div class="column column9">
 			<div class="catalog">
 				<!-- хлебные крошки -->
@@ -17,8 +13,8 @@ include_once 'views/header.php';
 				<div class="row clearfix">
 					<!-- элементы каталога -->
           <?php
-            for($i = 0; $i < 16; $i++) {
-              include 'views/_product.php';
+          	foreach ($products as $product) {
+	          include  __DIR__ . '/../_product.php';
             }
           ?>
 				</div>
@@ -27,4 +23,3 @@ include_once 'views/header.php';
 	</div>
 </div>
 </section>
-<?php include_once 'views/footer.php';
