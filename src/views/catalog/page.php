@@ -8,13 +8,13 @@
 				<!-- хлебные крошки -->
 				<div class="breadcrumbs">
 					<a href="index.html">Магазин</a>
-					<p>Мини - утки</p>
+					<p><?php echo $category_name['title']; ?></p>
 				</div>
 				<div class="row clearfix">
 					<!-- элементы каталога -->
           <?php
           	foreach ($products as $product) {
-	          include  __DIR__ . '/../_product.php';
+          		include  __DIR__ . '/../_product.php';
             }
           ?>
 				</div>

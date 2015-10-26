@@ -40,3 +40,18 @@ DELETE FROM `products` WHERE `id` = 3
 SELECT * FROM `products` WHERE `id` = 1
 
 SELECT `products`.`title`, `products`.`price` FROM `products` WHERE `id` = 1 ORDER BY `products`.`category_id` DESC
+
+CREATE TABLE `orders` (
+	`id` int(11) NOT NULL AUTO_INCREMENT,
+	`user` varchar(255) NOT NULL,
+	`address` text NOT NULL,
+	PRIMARY KEY (`id`) 
+) ENGINE=INNODB DEFAULT CHARSET='utf8'
+
+CREATE TABLE `ordered_products` (
+	`id` int(11) NOT NULL AUTO_INCREMENT,
+	`order_id` int(11) NOT NULL,
+	`product_id` int(11) NOT NULL,
+	`quantity` int(11) NOT NULL,
+	PRIMARY KEY (`id`) 
+) ENGINE=INNODB DEFAULT CHARSET='utf8'

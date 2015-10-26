@@ -14,18 +14,18 @@ class ProductRepository
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC);
 	}
 
-	public function get_product($categoryId) {
-	$stmt = $this->connection->prepare (
-		"SELECT p.id, p.title, p.description, p.price, c.title AS c_title 
-			FROM `products` AS p 
-			INNER JOIN `categories` AS c 
-				ON p.`category_id` = c.`id` 
-		WHERE p.`id` = :id"
-	);
-	$stmt->bindParam(":id", $categoryId);
-	$stmt->execute();
-
-	return($stmt->fetch(\PDO::FETCH_ASSOC));
+	public function get_product($id) {
+      $stmt = $this->connection->prepare(
+          "SELECT p.id, p.title, p.description, p.price, c.title AS c_title
+              FROM `products` AS p
+              INNER JOIN `categories` AS c
+                  ON p.`category_id` = c.`id`
+              WHERE p.`id` = :id"
+      );
+	$stmt->bindParam(":id", $id);
+	$stmt->execute();	
+	$product = $stmt->fetch(\PDO::FETCH_ASSOC);
+	return($product);
 	}
 
 	public function __construct(Connection $connection)

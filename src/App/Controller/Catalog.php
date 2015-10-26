@@ -16,11 +16,11 @@ class Catalog
 	public function page($categoryId)
 	{
 		$products = $this->categoryRepository->getProductsForCategory($categoryId);
-
-		$this->render($products);
+		$category_name = $this->categoryRepository->getCategoryName($categoryId);
+		$this->render($products, $category_name);
 	}
 
-	protected function render($products)
+	protected function render($products, $category_name)
 	{
 		 include_once __DIR__ .  '/../../views/head.php';
 		 include_once __DIR__ .  '/../../views/header.php';

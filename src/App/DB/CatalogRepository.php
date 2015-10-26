@@ -20,5 +20,13 @@ class CatalogRepository
 	    $stmt->execute();
 	    return $stmt->fetchAll(\PDO::FETCH_ASSOC);		
 	}
+	public function getCategoryName($categoryId)
+	{
+	    $sql = "SELECT `title` FROM `categories` WHERE `id` = :id";
+	    $stmt = $this->connection->prepare($sql);
+	    $stmt->bindParam(':id', $categoryId);
+	    $stmt->execute();
+	    return $stmt->fetch(\PDO::FETCH_ASSOC);		
+	}
 
 }
